@@ -9,7 +9,7 @@ namespace PhoneCallers.request
 {
     public class PhonePreprocessor : Preprocessor
     {
-        new public String ReplaceString = "{phone}";
+        //new public String ReplaceString = "{phone}";
 
         public PhonePreprocessor()
         {

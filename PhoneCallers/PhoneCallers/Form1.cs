@@ -22,19 +22,19 @@ namespace PhoneCallers
             InitializeComponent();
         }
 
-        public PhoneCaller phoneCaller;
+        public PhoneCaller PhoneCaller;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             CreateTestCfg();
-            //phoneCaller = CfgLoader.Load<PhoneCaller>("phone_caller.cfg");
-        }
+            PhoneCaller = CfgLoader.Load<PhoneCaller>("phone_caller.xml");
 
+        }
 
 
         private void CreateTestCfg()
         {
-            phoneCaller = new PhoneCaller(
+            PhoneCaller = new PhoneCaller(
                 new ProxyPool()
                 {
                     Proxies = new List<Proxy>() { new Proxy() { Url = "61.235.249.222", Port = 80 }, new Proxy() { Url = "24.157.37.61", Port = 8080 } }
@@ -48,29 +48,28 @@ namespace PhoneCallers
                         new RandomTextPreprocessor() { ReplaceString = "{comment}",RandomList = new List<string>() { "Срочно позвоните","жду звонка" } },
                         new RandomNumberPreprocessor() { ReplaceString = "{0-3}", MinNumber = 0, MaxNumber = 3 }
                     }
-                }
-               ,
+                },
                 new RequestTemplatesPool()
                 {
                     RequestTemplates = new List<RequestTemplate>()
-                    {
-                        new RequestTemplate()
-                        { Type = RequestType.Post,
-                         Arguments = new List<Argument>()
-                         {
-                             new Argument("name","{name}"),
-                             new Argument("phone","{name}"),
-                             new Argument("to","{0-3}"),
-                             new Argument("text","{comment}"),
-                             new Argument("phone2",""),
-                             new Argument("save","true")
+                     {
+                         new RequestTemplate()
+                         { Type = RequestType.Post,
+                          Arguments = new List<Argument>()
+                          {
+                              new Argument("name","{name}"),
+                              new Argument("phone","{name}"),
+                              new Argument("to","{0-3}"),
+                              new Argument("text","{comment}"),
+                              new Argument("phone2",""),
+                              new Argument("save","true")
+                          }
                          }
-                        }
-                    }
+                     }
                 }
 
                 );
-            CfgLoader.Save("phone_caller.xml", phoneCaller);
+            CfgLoader.Save("phone_caller.xml", PhoneCaller);
         }
     }
 }

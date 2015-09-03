@@ -8,11 +8,9 @@ using System.Xml.Serialization;
 
 namespace PhoneCallers.request.textPreprocessors
 {
-    [XmlInclude(typeof(RandomTextPreprocessor))]
-    [XmlInclude(typeof(RandomNumberPreprocessor))]
-
-   
-    public  class Preprocessor
+    [XmlInclude(typeof(RandomReplacement))]
+    [XmlInclude(typeof(PhonePreprocessor))]
+    public class Preprocessor
     {
         public String ReplaceString { get; set; }
 

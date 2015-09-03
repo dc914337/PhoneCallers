@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using PhoneCallers.proxy;
 using PhoneCallers.request;
+using PhoneCallers.request.textPreprocessors;
 
 namespace PhoneCallers.caller
 {
+    [XmlRoot]
     public class PhoneCaller
     {
         [XmlIgnore]
         public List<CallRequest> Requests = new List<CallRequest>();
 
-        Random rnd = new Random();
+        Random _rnd = new Random();
         public ProxyPool Proxies { get; set; }
         public RequestGenerator RequestGenerator { get; set; }
         public RequestTemplatesPool RequestTemplates { get; set; }
@@ -39,14 +41,14 @@ namespace PhoneCallers.caller
 
         public void SendNextRequest()
         {
-            var request = RequestGenerator.GetRequest(RequestTemplates.GetTemplate(), getRandomCallRequest().Phone);
+            var request = RequestGenerator.GetRequest(RequestTemplates.GetTemplate(), GetRandomCallRequest().Phone);
 
         }
 
-        private CallRequest getRandomCallRequest()
+        private CallRequest GetRandomCallRequest()
         {
             var availableRequests = Requests.Where(a => a.Count > 0).ToArray();
-            return availableRequests[rnd.Next(0, availableRequests.Length)];
+            return availableRequests[_rnd.Next(0, availableRequests.Length)];
         }
 
     }
