@@ -9,9 +9,9 @@ using PhoneCallers.request.textPreprocessors;
 
 namespace PhoneCallers.request
 {
-	public class RequestGenerator
+    public class RequestGenerator
     {
-        public List<Preprocessor> Preprocessors { get; set; }
+        public List<RandomReplacement> Preprocessors { get; set; }
         public PhonePreprocessor PhonePreprocessor { get; set; }
 
 

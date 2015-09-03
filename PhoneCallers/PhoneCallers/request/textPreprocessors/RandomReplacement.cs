@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.request.textPreprocessors
 {
-   public class NamePreprocessor : Preprocessor
+	public abstract class RandomReplacement : Preprocessor
     {
-	    public override void ProcessRequest( Request request )
-	    {
-		    throw new NotImplementedException();
-	    }
+        public abstract void ProcessRequest(Request request);
+
     }
 }

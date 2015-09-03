@@ -9,6 +9,6 @@ namespace PhoneCallers.request
 	public enum RequestType
     {
         Get,
-        Set
+        Post
     }
 }

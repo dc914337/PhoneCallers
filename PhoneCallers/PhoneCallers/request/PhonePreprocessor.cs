@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PhoneCallers.request.textPreprocessors;
 
 namespace PhoneCallers.request
 {
-	public class PhonePreprocessor
+    public class PhonePreprocessor : Preprocessor
     {
-        public void ProcessRequest(Request request, String phone)
+        new public String ReplaceString = "{phone}";
+
+        public PhonePreprocessor()
         {
 
         }
+
+        public void ProcessRequest(Request request, String phone)
+        {
+            ReplaceAll(request, phone);
+        }
+
     }
 }

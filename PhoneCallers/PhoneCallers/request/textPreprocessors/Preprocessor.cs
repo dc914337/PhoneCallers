@@ -2,15 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace PhoneCallers.request.textPreprocessors
 {
-    [XmlInclude(typeof(NamePreprocessor))]
+    [XmlInclude(typeof(RandomTextPreprocessor))]
     [XmlInclude(typeof(RandomNumberPreprocessor))]
-    public abstract class Preprocessor
+
+   
+    public  class Preprocessor
     {
-        public abstract void ProcessRequest(Request request);
+        public String ReplaceString { get; set; }
+
+        public void ReplaceAll(Request request, String replacement)
+        {
+            var keys = request.Arguments.Keys;
+            foreach (var key in keys)
+            {
+                String value = request.Arguments[key];
+                String changedValue = value.Replace(ReplaceString, replacement);
+                request.Arguments[key] = changedValue;
+            }
+        }
+
+
+
     }
 }

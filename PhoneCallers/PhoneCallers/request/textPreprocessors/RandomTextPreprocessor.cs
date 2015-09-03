@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.request.textPreprocessors
 {
-    public class RandomNumberPreprocessor : RandomReplacement
+    public class RandomTextPreprocessor : RandomReplacement
     {
-        public int MinNumber { get; set; }
-        public int MaxNumber { get; set; }
+        public List<String> RandomList { get; set; }
+
 
         public override void ProcessRequest(Request request)
         {

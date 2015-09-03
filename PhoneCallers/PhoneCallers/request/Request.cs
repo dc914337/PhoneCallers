@@ -14,6 +14,18 @@ namespace PhoneCallers.request
         public Request(RequestTemplate template)
         {
             Template = template;
+            CopyArgsFromTemplate();
+        }
+
+
+        private void CopyArgsFromTemplate()
+        {
+            Arguments = new Dictionary<string, string>();
+            foreach (var argument in Template.Arguments)
+            {
+                Arguments.Add(argument.Key, argument.Value);
+            }
+
         }
     }
 }
