@@ -34,8 +34,21 @@ namespace PhoneCallers
 
         private void CreateEmptyCfg()
         {
-            phoneCaller = new PhoneCaller(new ProxyPool() { Proxies = new List<Proxy>() { new Proxy() } }, new RequestGenerator() { PhonePreprocessor = new PhonePreprocessor(), Preprocessors = new List<Preprocessor>() { new NamePreprocessor(), new RandomNumberPreprocessor() } });
-            CfgLoader.Save("phone_caller.cfg", phoneCaller);
+            phoneCaller = new PhoneCaller(
+                new ProxyPool()
+                {
+                    Proxies = new List<Proxy>() { new Proxy() }
+                },
+                new RequestGenerator()
+                {
+                    PhonePreprocessor = new PhonePreprocessor(),
+                    Preprocessors = new List<Preprocessor>() { new NamePreprocessor(), new RandomNumberPreprocessor() }
+                }
+               ,
+                new RequestTemplatesPool() { RequestTemplates = new List<RequestTemplate>() { new RequestTemplate(), new RequestTemplate() } }
+
+                );
+            CfgLoader.Save("phone_caller.xml", phoneCaller);
         }
     }
 }

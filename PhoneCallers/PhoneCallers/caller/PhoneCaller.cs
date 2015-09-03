@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using PhoneCallers.proxy;
 using PhoneCallers.request;
 
@@ -11,22 +12,24 @@ namespace PhoneCallers.caller
 {
     public class PhoneCaller
     {
+        [XmlIgnore]
         public List<CallRequest> Requests = new List<CallRequest>();
-        Random rnd = new Random();
 
+        Random rnd = new Random();
         public ProxyPool Proxies { get; set; }
         public RequestGenerator RequestGenerator { get; set; }
         public RequestTemplatesPool RequestTemplates { get; set; }
 
-	    public PhoneCaller()
-	    {
-		    //serialization
-	    }
+        public PhoneCaller()
+        {
+            //serialization
+        }
 
-        public PhoneCaller(ProxyPool proxies, RequestGenerator requestGenerator)
+        public PhoneCaller(ProxyPool proxies, RequestGenerator requestGenerator, RequestTemplatesPool templatesPool)
         {
             Proxies = proxies;
             RequestGenerator = requestGenerator;
+            RequestTemplates = templatesPool;
         }
 
         public void AddRequest(String phone, int count)
