@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.proxy
 {
-    class Proxy
+	public class Proxy
     {
         public string Url { get; set; }
         public int Port { get; set; }

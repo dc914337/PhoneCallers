@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.request
 {
-    class RequestTemplatesPool
+	public class RequestTemplatesPool
     {
 
         public List<RequestTemplate> RequestTemplates { get; set; }

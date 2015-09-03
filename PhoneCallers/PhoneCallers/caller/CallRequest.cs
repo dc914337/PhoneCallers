@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.caller
 {
-    class CallRequest
+	public class CallRequest
     {
         public String Phone { get; set; }
         public int Count { get; set; }

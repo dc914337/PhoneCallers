@@ -64,8 +64,8 @@
     <Compile Include="request\RequestTemplate.cs" />
     <Compile Include="request\RequestTemplatesPool.cs" />
     <Compile Include="request\RequestType.cs" />
-    <Compile Include="request\textPreprocessors\IPreprocessor.cs" />
     <Compile Include="request\textPreprocessors\NamePreprocessor.cs" />
+    <Compile Include="request\textPreprocessors\Preprocessor.cs" />
     <Compile Include="request\textPreprocessors\RandomNumberPreprocessor.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

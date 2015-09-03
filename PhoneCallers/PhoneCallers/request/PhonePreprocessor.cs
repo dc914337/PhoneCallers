@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.request
 {
-    class PhonePreprocessor
+	public class PhonePreprocessor
     {
         public void ProcessRequest(Request request, String phone)
         {

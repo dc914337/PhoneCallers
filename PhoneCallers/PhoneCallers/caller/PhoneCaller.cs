@@ -9,7 +9,7 @@ using PhoneCallers.request;
 
 namespace PhoneCallers.caller
 {
-    class PhoneCaller
+    public class PhoneCaller
     {
         public List<CallRequest> Requests = new List<CallRequest>();
         Random rnd = new Random();
@@ -18,6 +18,10 @@ namespace PhoneCallers.caller
         public RequestGenerator RequestGenerator { get; set; }
         public RequestTemplatesPool RequestTemplates { get; set; }
 
+	    public PhoneCaller()
+	    {
+		    //serialization
+	    }
 
         public PhoneCaller(ProxyPool proxies, RequestGenerator requestGenerator)
         {

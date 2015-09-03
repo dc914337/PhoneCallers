@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PhoneCallers.request
 {
-	public class RequestTemplate
+    public class RequestTemplate
     {
         public String Url { get; set; }
-        public Dictionary<String, String> Arguments { get; set; }
+        public List<KeyValuePair<string, string>> Arguments { get; set; }
         public RequestType Type { get; set; }
 
         public DateTime LastUsed { get; set; }

@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PhoneCallers.caller;
+using PhoneCallers.cfg;
+using PhoneCallers.proxy;
+using PhoneCallers.request;
+using PhoneCallers.request.textPreprocessors;
 
 namespace PhoneCallers
 {
@@ -15,6 +20,22 @@ namespace PhoneCallers
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public PhoneCaller phoneCaller;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CreateEmptyCfg();
+            //phoneCaller = CfgLoader.Load<PhoneCaller>("phone_caller.cfg");
+        }
+
+
+
+        private void CreateEmptyCfg()
+        {
+            phoneCaller = new PhoneCaller(new ProxyPool() { Proxies = new List<Proxy>() { new Proxy() } }, new RequestGenerator() { PhonePreprocessor = new PhonePreprocessor(), Preprocessors = new List<Preprocessor>() { new NamePreprocessor(), new RandomNumberPreprocessor() } });
+            CfgLoader.Save("phone_caller.cfg", phoneCaller);
         }
     }
 }
